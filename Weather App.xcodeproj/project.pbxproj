@@ -13,6 +13,9 @@
 		E3251B5024B3661E00DEE228 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3251B4F24B3661E00DEE228 /* Assets.xcassets */; };
 		E3251B5324B3661E00DEE228 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3251B5224B3661E00DEE228 /* Preview Assets.xcassets */; };
 		E3251B5624B3661E00DEE228 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3251B5424B3661E00DEE228 /* LaunchScreen.storyboard */; };
+		E35A603624B5D1E90095C30A /* WebServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A603524B5D1E90095C30A /* WebServiceController.swift */; };
+		E35A603824B5D6E10095C30A /* OpenWeatherMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A603724B5D6E10095C30A /* OpenWeatherMapController.swift */; };
+		E35A603E24B60A9D0095C30A /* OpenWeatherMapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A603D24B60A9D0095C30A /* OpenWeatherMapData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		E3251B5224B3661E00DEE228 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E3251B5524B3661E00DEE228 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E3251B5724B3661E00DEE228 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E35A603524B5D1E90095C30A /* WebServiceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceController.swift; sourceTree = "<group>"; };
+		E35A603724B5D6E10095C30A /* OpenWeatherMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherMapController.swift; sourceTree = "<group>"; };
+		E35A603D24B60A9D0095C30A /* OpenWeatherMapData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWeatherMapData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,7 @@
 		E3251B4824B3661D00DEE228 /* Weather App */ = {
 			isa = PBXGroup;
 			children = (
+				E35A603424B5D1D00095C30A /* Model */,
 				E3251B4924B3661D00DEE228 /* AppDelegate.swift */,
 				E3251B4B24B3661D00DEE228 /* SceneDelegate.swift */,
 				E3251B4D24B3661D00DEE228 /* ContentView.swift */,
@@ -73,6 +80,24 @@
 				E3251B5224B3661E00DEE228 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E35A603424B5D1D00095C30A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E35A603F24B60AEA0095C30A /* JSONMappers */,
+				E35A603524B5D1E90095C30A /* WebServiceController.swift */,
+				E35A603724B5D6E10095C30A /* OpenWeatherMapController.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E35A603F24B60AEA0095C30A /* JSONMappers */ = {
+			isa = PBXGroup;
+			children = (
+				E35A603D24B60A9D0095C30A /* OpenWeatherMapData.swift */,
+			);
+			path = JSONMappers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,9 +171,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E35A603824B5D6E10095C30A /* OpenWeatherMapController.swift in Sources */,
+				E35A603624B5D1E90095C30A /* WebServiceController.swift in Sources */,
 				E3251B4A24B3661D00DEE228 /* AppDelegate.swift in Sources */,
 				E3251B4C24B3661D00DEE228 /* SceneDelegate.swift in Sources */,
 				E3251B4E24B3661D00DEE228 /* ContentView.swift in Sources */,
+				E35A603E24B60A9D0095C30A /* OpenWeatherMapData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
