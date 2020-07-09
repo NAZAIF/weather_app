@@ -31,9 +31,23 @@ class OpenWeatherMapController: WebServiceController {
                 completionHandler(nil, .invalidPayload(endpointURL))
                 return  
             }
+            
+            let decoder = JSONDecoder()
+            do {
+                let weatherList = try decoder.decode(OpenWeatherMapContainer.self, from: responseData)
+                guard let weatherInfo = weatherList.list?.first, let weather = weatherInfo.weather.first?.main,
+                    let temperature = weatherInfo.main.temp else {
+                        completionHandler(nil, .invalidPayload(endpointURL))
+                        return
+                }
+                
+                let weatherDescription = "\(weather) \(temperature) ºF"
+                completionHandler(weatherDescription, nil)
+            } catch let error {
+                completionHandler(nil, .forwarded(error))
+            }
         }
         
+        dataTask.resume()
     }
-    
-    
 }

@@ -1,6 +1,9 @@
 //
 //  OpenWeatherMapData.swift
-//  WeatherApp2
+//  Weather App
+//
+//  Created by Moideen Nazaif VM on 08/07/20.
+//  Copyright © 2020 Moideen Nazaif VM. All rights reserved.
 //
 
 import Foundation
@@ -24,4 +27,5 @@ struct OpenMapWeatherWeather: Codable {
 struct OpenMapWeatherMain: Codable {
     var temp: Float?
 }
+
 
