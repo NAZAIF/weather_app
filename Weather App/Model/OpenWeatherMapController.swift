@@ -9,10 +9,16 @@
 import Foundation
 
 private enum API {
-    static let key = "<open weather api key here>"
+    static let key = "<OpenWeatherMap apiKey here>"
 }
 
-class OpenWeatherMapController: WebServiceController {
+final class OpenWeatherMapController: WebServiceController {
+    let fallbackService: WebServiceController?
+    
+    init(fallbackService: WebServiceController? = nil) {
+        self.fallbackService = fallbackService
+    }
+    
     func fetchWeatherData(for city: String, completionHandler: @escaping (String?, WebServiceControllerError?) -> Void) {
         let endpoint = "https://api.openweathermap.org/data/2.5/find?q=\(city)&units=imperial&appid=\(API.key)"
         
@@ -23,13 +29,21 @@ class OpenWeatherMapController: WebServiceController {
         
         let dataTask = URLSession.shared.dataTask(with: endpointURL) { (data, response, error) in
             guard error == nil else {
-                completionHandler(nil, .forwarded(error!))
+                if let fallback = self.fallbackService {
+                    fallback.fetchWeatherData(for: city, completionHandler: completionHandler)
+                } else {
+                    completionHandler(nil, .forwarded(error!))
+                }
                 return
             }
             
             guard let responseData = data else {
-                completionHandler(nil, .invalidPayload(endpointURL))
-                return  
+                if let fallback = self.fallbackService {
+                    fallback.fetchWeatherData(for: city, completionHandler: completionHandler)
+                } else {
+                    completionHandler(nil, .invalidPayload(endpointURL))
+                }
+                return
             }
             
             let decoder = JSONDecoder()
@@ -42,6 +56,7 @@ class OpenWeatherMapController: WebServiceController {
                 }
                 
                 let weatherDescription = "\(weather) \(temperature) ºF"
+                print("Uses OpenWeatherMap data")
                 completionHandler(weatherDescription, nil)
             } catch let error {
                 completionHandler(nil, .forwarded(error))

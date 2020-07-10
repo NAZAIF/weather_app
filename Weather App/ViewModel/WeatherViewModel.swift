@@ -9,7 +9,7 @@
 import Foundation
 
 class WeatherViewModel: ObservableObject {
-    private let weatherService = OpenWeatherMapController()
+    private let weatherService = OpenWeatherMapController(fallbackService: WeatherStackController())
     
     //    @Published allows SwiftUI to observe this property and update view whenever this property changes.
     @Published var weatherInfo = ""
